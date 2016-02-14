@@ -75,14 +75,12 @@ var TreeStyleTabWindowHelper = {
 				Object.keys(window.__treestyletab__openLinkIn_extraParams).forEach(function(aKey) {
 					aParams[aKey] = window.__treestyletab__openLinkIn_extraParams[aKey];
 				});
-			var result;
 			try {
-				result = window.__treestyletab__openLinkIn.apply(this, [aUrl, aWhere, aParams].concat(aArgs));
+				return window.__treestyletab__openLinkIn.apply(this, [aUrl, aWhere, aParams].concat(aArgs));
 			}
-			catch(e) {
+			finally {
+				delete window.__treestyletab__openLinkIn_extraParams;
 			}
-			delete window.__treestyletab__openLinkIn_extraParams;
-			return result;
 		};
 
 		window.__treestyletab__handleLinkClick = window.handleLinkClick;
@@ -91,14 +89,12 @@ var TreeStyleTabWindowHelper = {
 				event    : aEvent,
 				linkNode : aLinkNode
 			};
-			var result;
 			try {
-				result = window.__treestyletab__handleLinkClick.apply(this, [aEvent, aHref, aLinkNode].concat(aArgs));
+				return window.__treestyletab__handleLinkClick.apply(this, [aEvent, aHref, aLinkNode].concat(aArgs));
 			}
-			catch(e) {
+			finally {
+				delete window.__treestyletab__openLinkIn_extraParams;
 			}
-			delete window.__treestyletab__openLinkIn_extraParams;
-			return result;
 		};
 
 		this.overrideExtensionsPreInit(); // windowHelperHacks.js
