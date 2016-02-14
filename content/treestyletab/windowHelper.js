@@ -80,10 +80,8 @@ var TreeStyleTabWindowHelper = {
 				result = window.__treestyletab__openLinkIn.apply(this, [aUrl, aWhere, aParams].concat(aArgs));
 			}
 			catch(e) {
-				dump(e+'\n');
 			}
-			if (window.__treestyletab__openLinkIn_extraParams)
-				delete window.__treestyletab__openLinkIn_extraParams;
+			delete window.__treestyletab__openLinkIn_extraParams;
 			return result;
 		};
 
@@ -98,10 +96,8 @@ var TreeStyleTabWindowHelper = {
 				result = window.__treestyletab__handleLinkClick.apply(this, [aEvent, aHref, aLinkNode].concat(aArgs));
 			}
 			catch(e) {
-				dump(e+'\n');
 			}
-			if (window.__treestyletab__openLinkIn_extraParams)
-				delete window.__treestyletab__openLinkIn_extraParams;
+			delete window.__treestyletab__openLinkIn_extraParams;
 			return result;
 		};
 
